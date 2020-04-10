@@ -1,15 +1,16 @@
 const path = require("path")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // webpack4以上要添加VueLoaderPlugin
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
     entry: __dirname + "/src/main.js",//打包入口
     output: {//出口文件
-        path: __dirname + "/public",//打包后存放的地方
-        filename: "bundle.js" //打包后的文件命名
+        path: __dirname + "/build",//打包后存放的地方
+        filename: "[name].[contenthash].js" //打包后的文件命名
     },
     devServer: {
-        contentBase: "./public",//本地服务器所加载的页面所在的目录
+        contentBase: "./build",//本地服务器所加载的页面所在的目录
         historyApiFallback: true,//不跳转
         inline: true,//实时刷新
         port: 9999
@@ -34,6 +35,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: 'webpack',
