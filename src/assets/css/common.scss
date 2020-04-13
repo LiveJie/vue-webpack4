@@ -1,152 +1,110 @@
-body,
-div,
-span,
-header,
-footer,
-nav,
-section,
-aside,
-article,
-ul,
-dl,
-dt,
-dd,
-li,
-a,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-i,
-b,
-textarea,
-button,
-input,
-select,
-figure,
-figcaption {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  font-style: normal;
-  text-decoration: none;
-  border: none;
-  color: #333;
-  font-weight: normal;
-  font-family: "Microsoft Yahei";
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-font-smoothing: antialiased;
-  &:hover {
-    outline: none;
-  }
+.clear {
+    clear: both;
 }
 
-/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-  background-color: #f5f5f5;
+.cursor {
+    cursor: pointer;
 }
 
-/*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
-  border-radius: 10px;
-  background-color: #f5f5f5;
+.font24 {
+    font-size: 24px;
 }
 
-/*定义滑块 内阴影+圆角*/
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #555;
+.font12 {
+    font-size: 12px;
 }
 
-input[type="button"],
-input[type="submit"],
-input[type="search"],
-input[type="reset"] {
-  -webkit-appearance: none;
+.font14 {
+    font-size: 14px;
 }
 
-textarea {
-  -webkit-appearance: none;
+.font16 {
+    font-size: 16px;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  background-color: #f5f5f5;
+.font18 {
+    font-size: 18px;
 }
 
-.clear:after {
-  content: "";
-  display: block;
-  clear: both;
+.font20 {
+    font-size: 20px;
+}
+
+.font30 {
+    font-size: 30px;
+}
+
+.font36 {
+    font-size: 36px;
+}
+
+.font46 {
+    font-size: 46px;
+}
+
+.weight {
+    font-weight: bold;
 }
 
 .clear {
-  zoom: 1;
+    clear: bold;
 }
 
-.back_img {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+.clearfloat:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
 }
 
-.margin {
-  margin: 0 auto;
+.clearfloat {
+    zoom: 1;
 }
 
-.left {
-  float: left;
+[v-cloak] {
+    display: none;
 }
 
-.right {
-  float: right;
+.el-select .el-input .el-select__caret {
+    -ms-transition: transform .3s;
+    -ms-transform: rotateZ(180deg);
 }
 
-.hide {
-  display: none;
+.font-text {
+    font-size: 14px;
+    color: #999;
 }
 
-.show {
-  display: block;
+.font-title {
+    color: #333;
+    font-size: 18px;
 }
 
-.ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.hot {
+    color: #b71ed7;
+    font-weight: 500;
+    font-style: inherit;
 }
 
-.paddingTop {
-  padding-top: 1.95rem;
+.red {
+    color: #e8001c;
+    font-weight: 500;
+    font-style: inherit;
 }
 
-@keyframes backOpacity {
-  0% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
+.hoverColor1 {
+    cursor: pointer;
+
+    &:hover {
+        color: #ef5924 !important;
+    }
 }
 
-.animation_opactiy {
-  animation: backOpacity 2s ease-in-out infinite;
+.hoverColor2 {
+    cursor: pointer;
+
+    &:hover {
+        background: #f1f1f1 !important;
+    }
 }
