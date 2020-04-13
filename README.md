@@ -19,7 +19,7 @@ npm run build --report
 
 ```
 ### 工程目录如下
-
+```
 ├── dist
 ├── src
 │   ├── api
@@ -52,4 +52,4 @@ npm run build --report
 ├── package.json
 ├── README.md
 └── webpack.config.js
-
+```
