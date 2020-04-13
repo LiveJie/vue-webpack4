@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="index">
     vue webpack
   </div>
 </template>
@@ -16,5 +16,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.index {
+  color: $theme;
+  background: linear-gradient(#666, #f60)
+}
 </style>
