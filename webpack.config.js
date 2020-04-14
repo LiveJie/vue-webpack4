@@ -47,7 +47,7 @@ module.exports = {
                         options: {
                           resources: [path.resolve(__dirname + "/src/assets/css/theme.scss"), path.resolve(__dirname + "/src/assets/css/mixin.scss")] // 绝对路径引入主题色文件
                         },
-                      },
+                    },
                 ]
             },
             {
