@@ -25,3 +25,29 @@
     -webkit-box-orient: vertical;
   }
   
+  @mixin font_color($color) {
+    color: $color;
+    [data-theme="theme1"] & {
+      color: $font-color-theme1;
+    }
+    [data-theme="theme2"] & {
+      color: $font-color-theme2;
+    }
+    [data-theme="theme3"] & {
+      color: $font-color-theme3;
+    }
+  }
+
+  @mixin bg_color($color) {
+    background: $color;
+    [data-theme="theme1"] & {
+      background: $bg-theme1;
+    }
+    [data-theme="theme2"] & {
+      background: $bg-theme2;
+    }
+    [data-theme="theme3"] & {
+      background: $bg-theme3;
+    }
+  }
+

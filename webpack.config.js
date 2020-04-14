@@ -2,6 +2,7 @@ const path = require("path");
 const {
     CleanWebpackPlugin
 } = require("clean-webpack-plugin");
+const copyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // webpack4以上要添加VueLoaderPlugin
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
@@ -16,7 +17,8 @@ module.exports = {
         contentBase: "./build", //本地服务器所加载的页面所在的目录
         historyApiFallback: true, //不跳转
         inline: true, //实时刷新
-        port: 9999
+        port: 9999,
+        open: false
     },
     module: {
         rules: [
@@ -43,7 +45,7 @@ module.exports = {
                     {
                         loader: 'sass-resources-loader',
                         options: {
-                          resources: path.resolve(__dirname + "/src/assets/css/theme.scss") // 绝对路径引入主题色文件
+                          resources: [path.resolve(__dirname + "/src/assets/css/theme.scss"), path.resolve(__dirname + "/src/assets/css/mixin.scss")] // 绝对路径引入主题色文件
                         },
                       },
                 ]
@@ -60,6 +62,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new copyWebpackPlugin([{
+            from:path.resolve(__dirname+'/static'),// 打包的静态资源目录地址
+            to:'static' // 打包到dist下面的static
+        }]),
         new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
@@ -77,7 +83,7 @@ module.exports = {
     resolve: {
         alias: {
             vue$: "vue/dist/vue.esm.js", //重定向代理
-            "@src": path.resolve(__dirname + "/src/"), //重定向代理
+            "@": path.resolve(__dirname + "/src/"), //重定向代理
         }
     }
 };
