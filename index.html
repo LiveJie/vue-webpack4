@@ -4,9 +4,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>webpack</title>
+    <link rel="stylesheet"  href="./static/jigsaw.css">
+    <script src="./static/jigsaw.js" defer></script>
+    <style>
+      .container {
+        width: 310px;
+        margin: 100px auto;
+      }
+      input {
+        display: block;
+        width: 290px;
+        line-height: 40px;
+        margin: 10px 0;
+        padding: 0 10px;
+        outline: none;
+        border:1px solid #c8cccf;
+        border-radius: 4px;
+        color:#6a6f77;
+      }
+      #msg {
+        width: 100%;
+        line-height: 40px;
+        font-size: 14px;
+        text-align: center;
+      }
+      a:link,a:visited,a:hover,a:active {
+        margin-left: 100px;
+        color: #0366D6;
+      }
+  
+    </style>
   </head>
   <body>
     <div id="app"></div>
+    <div class="container">
+      <input value="admin" readonly/>
+      <input type="password" value="1234567890" readonly/>
+      <div id="captcha"></div>
+      <div id="msg"></div>
+    </div>
     <!-- built files will be auto injected -->
+    
+    <script>
+      if (!window.jigsaw) {
+        document.write('<script src="./static/jigsaw.js"><\/script>')
+      }
+      </script>
+      <script>
+        
+        window.jigsaw.init({
+          el: document.getElementById('captcha'),
+          onSuccess: function() {
+            document.getElementById('msg').innerHTML = '登录成功！'
+          },
+          onFail: cleanMsg,
+          onRefresh: cleanMsg
+        })
+        function cleanMsg() {
+          document.getElementById('msg').innerHTML = ''
+        }
+      </script>
   </body>
 </html>
