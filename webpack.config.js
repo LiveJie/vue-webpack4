@@ -4,6 +4,8 @@ const {
 } = require("clean-webpack-plugin");
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const config = require('./config')
+const FriendlyErrorsWebpackPlugin=require('friendly-errors-webpack-plugin');
 // webpack4以上要添加VueLoaderPlugin
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = {
@@ -13,13 +15,7 @@ module.exports = {
         path: __dirname + "/build", //打包后存放的地方
         filename: "[name].[contenthash].js" //打包后的文件命名
     },
-    devServer: {
-        contentBase: "./build", //本地服务器所加载的页面所在的目录
-        historyApiFallback: true, //不跳转
-        inline: true, //实时刷新
-        port: 9999,
-        open: false
-    },
+    devServer: config.devServer,
     module: {
         rules: [
             {
@@ -66,6 +62,11 @@ module.exports = {
             from:path.resolve(__dirname+'/static'),// 打包的静态资源目录地址
             to:'static' // 打包到dist下面的static
         }]),
+        new FriendlyErrorsWebpackPlugin({
+            compilationSuccessInfo: {
+              messages: [`Your application is running here: http://${config.devServer.host}:${config.devServer.port}`],
+            }
+          }),
         new CleanWebpackPlugin(),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
@@ -80,6 +81,7 @@ module.exports = {
             template: "index.html" // 模板路径
         })
     ],
+    stats:"none",
     resolve: {
         alias: {
             vue$: "vue/dist/vue.esm.js", //重定向代理
