@@ -1,7 +1,7 @@
 {
   "name": "init",
   "version": "1.0.0",
-  "description": "",
+  "description": "基于webpack4搭建的vue基础框架",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "homor_jie",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.7.6",
