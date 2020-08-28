@@ -4,7 +4,6 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-    test: 1
 }
 
 const mutations = {

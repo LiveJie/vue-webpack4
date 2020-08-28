@@ -1,5 +1,5 @@
 const state = {
-    test: '1'
+    text: 'webpack 牛批！'
   }
   
   const mutations = {
@@ -14,4 +14,3 @@ const state = {
     mutations,
     actions
   }
-  

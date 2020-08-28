@@ -1,0 +1,47 @@
+.flex {
+    display: flex;
+  }
+  
+  .flex1 {
+    flex: 1;
+  }
+  
+  .flex2 {
+    flex: 2;
+  }
+  
+  .flex3 {
+    flex: 3;
+  }
+  
+  .flex4 {
+    flex: 4;
+  }
+  
+  .jcenter {
+    justify-content: center;
+  }
+  
+  .column {
+    flex-direction: column;
+  }
+  
+  .row {
+    flex-direction: row;
+  }
+  
+  .aitem {
+    align-items: center;
+  }
+  
+  .clearbox {
+    box-sizing: border-box;
+  }
+  
+  .jaround {
+    justify-content: space-around;
+  }
+  
+  .jbetween {
+    justify-content: space-between;
+  }

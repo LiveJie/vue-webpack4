@@ -1,4 +1,4 @@
 const getters = {
-    test: state => state.main.test
+    text: state => state.main.text
 }
 export default getters

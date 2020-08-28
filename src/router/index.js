@@ -5,10 +5,9 @@ export default new Router({
     routes: [
       {
         path: '/',
-        name: 'index',
-        component: (resolve) => require(['../views/Index.vue'], resolve),
+        name: 'home',
+        component: (resolve) => require(['../views/index.vue'], resolve),
       }
     ],
     mode: 'history'
-  })
-  
+})
