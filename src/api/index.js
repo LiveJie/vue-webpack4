@@ -1,6 +1,7 @@
 /* eslint-disable */
 /**
  * @author jie
+ *  date 2019/3/26
  *  data 文件夹下面放不同模块的接口
  *  method: 'get' 'delete' 'post' 'put'
  *  value: true   接口有value时 参数以键值对的值拼接到链接后面 xxx.com/getUser?name=哈哈&id=2
