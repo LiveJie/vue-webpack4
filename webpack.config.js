@@ -7,6 +7,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const config = require('./config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 module.exports = {
+    mode: process.env.ENV === 'development' ? 'development': 'production',
     entry: __dirname + "/src/main.js", // 打包入口
     output: { // 出口文件
         path: __dirname + "/dist", // 打包后存放的地方
@@ -79,7 +80,7 @@ module.exports = {
             compilationSuccessInfo: {
                 messages: [`Your application is running here: http://${config.devServer.host}:${config.devServer.port}`],
             },
-            onErrors: true ? config.devServer.onErrors: undefined // 是否开启错误捕获
+            onErrors: process.env.ENV === 'development' ? config.devServer.onErrors: undefined // 是否开启错误捕获
         }),
         new HtmlWebpackPlugin({
             title: 'webpack',
@@ -92,5 +93,5 @@ module.exports = {
             template: 'index.html' // 模板路径
         })
     ],
-    // stats:"none"
+    stats: process.env.ENV === 'development' ? 'none': true 
 }

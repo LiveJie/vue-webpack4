@@ -78,6 +78,7 @@ export default {
       this.deleteList()
       this.getList()
       this.updateList()
+      console.log(process.env.NODE_ENV, "process.env")
   }
 }
 </script>
