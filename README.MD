@@ -1,4 +1,10 @@
-vue-webpack4
+#### 项目介绍
+# vue-wepack4 基于webpack4的vue集成项目
+
+# 架构说明
+
+```
+.
 ├── config
 │   └── index.js
 ├── dist
@@ -40,3 +46,14 @@ vue-webpack4
 │   └── test.txt
 ├── webpack.config.js
 └── yarn.lock
+.
+```
+
+#### 安装教程
+
+1. npm i // cnpm i
+
+#### 使用说明
+
+1. 运行项目npm run dev
+2. 打包 npm run build

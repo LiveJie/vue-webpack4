@@ -2,6 +2,7 @@ module.exports = {
     devServer: {
         contentBase: "./dist", // 本地服务器所加载的页面所在的目录
         historyApiFallback: true, // 找不到界面默认返回首页
+        disableHostCheck: true, // 检查主机host 开发环境下可建议禁止
         inline: true, //实时刷新
         host: '0.0.0.0',
         port: 8888,

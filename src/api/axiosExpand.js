@@ -4,10 +4,10 @@
 export function sendOut(msg) {
     if (!localStorage.ajax_oldTime) {
         localStorage.ajax_oldTime = new Date()
-        // Message.error(msg)
+        console.log(msg)
     }
     if (((new Date() - new Date(localStorage.ajax_oldTime)) / 1000) > 3) {
-        // Message.error(msg)
+        console.log(msg)
         localStorage.ajax_oldTime = new Date()
     }
 }

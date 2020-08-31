@@ -28,7 +28,6 @@ Axios.defaults.headers = {
 
 // 数据请求之前
 Axios.interceptors.request.use((config) => {
-  console.log(config, "config")
   return config
 }, error => {
   promise.reject(error)

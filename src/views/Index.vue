@@ -35,14 +35,11 @@ export default {
     },
     async addList() {
       let json = {
-        id: 10,
-        bodyParam: {
-          name: "哈哈"
-        }
+        id: 10
       }
       const res = await this.$Axios("test_add", json)
       if(res) {
-        console.log(res)
+        console.log(res, "11")
       }
     },
     async deleteList() {
@@ -62,7 +59,7 @@ export default {
       }
       const res = await this.$Axios("test_getList", json)
       if(res) {
-        console.log(res)
+        console.log(res, "111")
       }
     },
     async updateList() {
