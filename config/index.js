@@ -1,3 +1,13 @@
+// 引入环境变量依赖
+const fs = require('fs')
+const dotenv = require('dotenv')
+const envConfig = dotenv.parse(fs.readFileSync('.env.production'))
+for (const k in envConfig) {
+  process.env[k] = envConfig[k]
+  console.log(process.env[k])
+}
+// console.log(process.env.INTERFACE_PATH, "process.env")
+// console.log(process.env.INTERFACE_NAME, "process.env")
 module.exports = {
     devServer: {
         contentBase: "./dist", // 本地服务器所加载的页面所在的目录

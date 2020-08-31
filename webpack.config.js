@@ -92,5 +92,5 @@ module.exports = {
             template: 'index.html' // 模板路径
         })
     ],
-    stats:"none"
+    // stats:"none"
 }
