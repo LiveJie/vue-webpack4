@@ -1,0 +1,36 @@
+<!-- 开发指南-快速上手模块 -->
+<template>
+    <div class="fast-get-wrapper">
+        快速上手
+    </div>
+</template>
+
+<script>
+
+export default {
+    name: 'FastGet',
+    components: {},
+    data() {
+        //这里存放数据
+        return {
+
+        };
+    },
+    methods: {
+
+    },
+    //生命周期 - 创建完成（可以访问当前this实例）
+    created() {
+
+    },
+    //生命周期 - 挂载完成（可以访问DOM元素）
+    mounted() {
+
+    },
+}
+</script>
+<style lang='scss' scoped>
+.fast-get-wrapper {
+
+}
+</style>

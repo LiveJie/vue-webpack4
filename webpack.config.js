@@ -11,7 +11,8 @@ module.exports = {
     entry: __dirname + "/src/main.js", // 打包入口
     output: { // 出口文件
         path: __dirname + "/dist", // 打包后存放的地方
-        filename: "bundle.js" // 打包后的文件命名
+        filename: "bundle.js", // 打包后的文件命名
+        publicPath: '/'
     },
     devServer: config.devServer,
     resolve: {

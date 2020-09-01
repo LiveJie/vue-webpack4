@@ -1,3 +1,4 @@
+// const path = require("path");
 const fs = require('fs')
 // 引入环境变量依赖
 const dotenv = require('dotenv')
@@ -20,7 +21,10 @@ for (const k in configEnv) {
 
 module.exports = {
   devServer: {
-    contentBase: "./dist", // 本地服务器所加载的页面所在的目录
+    // contentBase: path.join(__dirname, "../src/views/index"),
+    contentBase: "../dist", // 本地服务器所加载的页面所在的目录
+    publicPath: '/', // 公共路径 打包后资源可以访问的路径
+    // assetsPublicPath: './',
     historyApiFallback: true, // 找不到界面默认返回首页
     disableHostCheck: true, // 检查主机host 开发环境下可建议禁止
     inline: true, //实时刷新

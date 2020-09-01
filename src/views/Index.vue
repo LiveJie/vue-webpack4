@@ -1,19 +1,24 @@
 <template>
-  <div class="index-wrapper">
-    <!-- <header class="index-header flex">
-      <div class="theme theme1"></div>
-      <div class="theme theme2"></div>
-      <div class="theme theme3"></div>
-    </header>
-    <div class="content">
-      <div class="primary jcenter aitem flex">主题色</div>
-      <div class="bth-box">
-        <div class="list cursor theme1" @click="changeTheme('theme1')">改变主题色1</div>
-        <div class="list cursor theme2" @click="changeTheme('theme2')">改变主题色2</div>
-        <div class="list cursor theme3" @click="changeTheme('theme3')">改变主题色3</div>
+    <div class="index-wrapper">
+      <div class="catalog-header"></div>
+      <div class="catalog-box flex">
+        <div class="catalog-wrapper">
+          <div class="catalog-list" v-for="(item, index) of catalogData" :key="index">
+            <div class="catalog-title font20">{{item.title}}</div>
+            <div class="catalog-content">
+              <div class="list" v-for="(childrenItem, index1) of item.children" :key="index1" @click="routerGo(childrenItem.link)">
+                {{childrenItem.title}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-wrapper">
+          <keep-alive>
+            <router-view />
+          </keep-alive>
+        </div>
       </div>
-    </div> -->
-  </div>
+    </div>
 </template>
 
 <script>
@@ -24,12 +29,45 @@ export default {
   name: 'Home',
   data () {
     return {
+      catalogData: [
+        {
+          title: '开发指南',
+          children: [
+            { 
+              title: '安装',
+              link: '/dev-guide/install'
+            },
+            { 
+              title: '快速上手',
+              link: '/dev-guide/fastget'
+            },
+          ]
+        },
+        {
+          title: '组件',
+          children: [
+            { 
+              title: 'button',
+              link: '/'
+            },
+            { 
+              title: 'input输入框',
+              link: '/'
+            },
+          ]
+        },
+      ]
     }
   },
   computed: {
     ...mapGetters(["text"])
   },
   methods: {
+    // 路由跳转
+    routerGo(link) {
+      console.log(link)
+      this.$router.push({path: link})
+    },
     changeTheme(type) {
       setTheme(type)
     },
@@ -74,17 +112,47 @@ export default {
     },
   },
   mounted() {
-      this.addList()
-      this.deleteList()
-      this.getList()
-      this.updateList()
-      console.log(process.env.NODE_ENV, "process.env")
+      // this.addList()
+      // this.deleteList()
+      // this.getList()
+      // this.updateList()
+      // console.log(process.env.NODE_ENV, "process.env")
   }
 }
 </script>
-
 <style  lang="scss" scoped>
 .index-wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  .catalog-header {
+    height: 60px;
+  }
+  .catalog-box {
+    .catalog-wrapper {
+      width: 200px;
+      border: 1px solid red;
+      .catalog-list {
+        margin-bottom: 20px;
+        .catalog-title {
+          color: #000;
+          margin-bottom: 16px;
+        }
+        .catalog-content {
+          .list {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            color: #666;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .content-wrapper {
+      flex: 1;
+      border: 1px solid red;
+    }
+  }
   .theme {
     width: 100px;
     height: 100px;

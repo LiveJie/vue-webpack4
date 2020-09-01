@@ -9,7 +9,14 @@ require('./mock')
 if(localStorage.getItem("WINDOWS_THEME")) {
     window.document.documentElement.setAttribute('data-theme', localStorage.getItem("WINDOWS_THEME"))
 }
-
+router.onError((error) => {
+    const pattern = /Loading chunk (\d)+ failed/g;
+    const isChunkLoadFailed = error.message.match(pattern);
+    const targetPath = router.history.pending.fullPath;
+    if (isChunkLoadFailed) {
+      router.replace(targetPath);
+    }
+  });
 Vue.prototype.$Axios = Axios
 new Vue({
     el: "#app",
