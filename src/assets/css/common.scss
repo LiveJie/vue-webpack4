@@ -106,3 +106,19 @@
         background: #f1f1f1 !important;
     }
 }
+pre {
+    display: block;
+    font-family: Consolas,Menlo,Courier,monospace;
+    box-sizing: border-box;
+    line-height: 1.5;
+    code {
+        background: #f7f7f7;
+        display: block;
+        overflow-x: auto;
+        color: #525252;
+        padding: 15px;
+        border: none;
+        border-radius: 3px;
+        white-space: pre;
+    }
+}

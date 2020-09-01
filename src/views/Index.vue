@@ -6,7 +6,7 @@
           <div class="catalog-list" v-for="(item, index) of catalogData" :key="index">
             <div class="catalog-title font20">{{item.title}}</div>
             <div class="catalog-content">
-              <div class="list" v-for="(childrenItem, index1) of item.children" :key="index1" @click="routerGo(childrenItem.link)">
+              <div :class="activePath === childrenItem.link ? 'list active': 'list'" v-for="(childrenItem, index1) of item.children" :key="index1" @click="routerGo(childrenItem.link)">
                 {{childrenItem.title}}
               </div>
             </div>
@@ -56,7 +56,8 @@ export default {
             },
           ]
         },
-      ]
+      ],
+      activePath: ''
     }
   },
   computed: {
@@ -65,7 +66,7 @@ export default {
   methods: {
     // 路由跳转
     routerGo(link) {
-      console.log(link)
+      this.activePath = link
       this.$router.push({path: link})
     },
     changeTheme(type) {
@@ -112,6 +113,8 @@ export default {
     },
   },
   mounted() {
+    this.activePath = this.$router.currentRoute.path
+      console.log()
       // this.addList()
       // this.deleteList()
       // this.getList()
@@ -124,33 +127,45 @@ export default {
 .index-wrapper {
   width: 1200px;
   margin: 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
   .catalog-header {
     height: 60px;
   }
   .catalog-box {
     .catalog-wrapper {
       width: 200px;
-      border: 1px solid red;
+      background: #fff;
+      margin-right: 2px;
       .catalog-list {
         margin-bottom: 20px;
         .catalog-title {
           color: #000;
-          margin-bottom: 16px;
+          margin: 20px;
         }
         .catalog-content {
           .list {
             width: 100%;
-            height: 40px;
-            line-height: 40px;
+            line-height: 30px;
             color: #666;
             cursor: pointer;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            &:hover {
+              background: #f1f1f1;
+              color: $primary-theme1;
+            }
+            &.active {
+              color: $primary-theme1;
+            }
           }
         }
       }
     }
     .content-wrapper {
       flex: 1;
-      border: 1px solid red;
+      background: #fff;
+      padding: 10px 20px;
     }
   }
   .theme {
