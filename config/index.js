@@ -18,7 +18,6 @@ for (const k in configEnv) {
   }
 }
 
-// console.log(process.env.INTERFACE_NAME, "process.env")
 module.exports = {
   devServer: {
     contentBase: "./dist", // 本地服务器所加载的页面所在的目录
