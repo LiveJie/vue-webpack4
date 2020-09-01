@@ -47,8 +47,8 @@ export default {
           title: '组件',
           children: [
             { 
-              title: 'button',
-              link: '/'
+              title: 'emoji',
+              link: '/ui/emoji'
             },
             { 
               title: 'input输入框',

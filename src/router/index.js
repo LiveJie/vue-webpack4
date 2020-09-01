@@ -21,7 +21,14 @@ export default new Router({
               component: (resolve) => {
                 return require(['@/views/dev-guide/fast-get.vue'], resolve)
               }
-            }
+            },
+            {
+              path: '/ui/emoji',
+              name: 'emoji',
+              component: (resolve) => {
+                return require(['@/views/ui-components/emoji.vue'], resolve)
+              }
+            },
             ]
           }
         ],

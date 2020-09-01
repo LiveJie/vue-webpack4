@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import "@/assets/css/index.scss";
 import Axios from '@/api'
+import BasicUI from 'basic-vue-ui/lib/basic-vue-ui.umd.js'
+import "basic-vue-ui/lib/basic-vue-ui.css"
+Vue.use(BasicUI)
 // 引入mockjs
 require('./mock')
 if(localStorage.getItem("WINDOWS_THEME")) {

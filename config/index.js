@@ -26,7 +26,7 @@ module.exports = {
     historyApiFallback: true, // 找不到界面默认返回首页
     disableHostCheck: true, // 检查主机host 开发环境下可建议禁止
     inline: true, //实时刷新
-    host: '0.0.0.0',
+    host: 'localhost',
     port: 8888,
     open: false
   },

@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "basic-vue-ui": "^0.1.5",
     "dotenv": "^8.2.0",
     "vue": "^2.6.12",
     "vue-router": "^3.4.3",
