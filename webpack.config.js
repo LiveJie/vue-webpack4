@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const config = require('./config')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-module.exports = {
+var webpackConfig = {
     mode: process.env.ENV === 'development' ? 'development': 'production',
     entry: __dirname + "/src/main.js", // 打包入口
     output: { // 出口文件
@@ -93,4 +93,9 @@ module.exports = {
         })
     ],
     stats: process.env.ENV === 'development' ? 'none': true 
+};
+module.exports = (env, argv) => {
+    argv.env && (config.mode = "production")
+    config.hiddleEnv(argv.env)
+    return webpackConfig
 }

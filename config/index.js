@@ -1,24 +1,9 @@
 const fs = require('fs')
 // 引入环境变量依赖
 const dotenv = require('dotenv')
-const clientEnv = process.env.npm_lifecycle_event;
-let envPath = ''
-switch (clientEnv) {
-  case "dev":
-    envPath = '.env.development'
-    break;
-  case "build":
-    envPath = '.env.production'
-    break;
-}
-const configEnv = dotenv.parse(fs.readFileSync(envPath))
-for (const k in configEnv) {
-  if(configEnv.hasOwnProperty(k)) {
-    process.env[k] = configEnv[k]
-  }
-}
 
 module.exports = {
+  mode: "development",
   devServer: {
     contentBase: "../dist", // 本地服务器所加载的页面所在的目录
     publicPath: '/', // 公共路径 打包后资源可以访问的路径
@@ -28,6 +13,14 @@ module.exports = {
     host: 'localhost',
     port: 8888,
     open: false
+  },
+  hiddleEnv: (env) => {
+    let configEnv = dotenv.parse(fs.readFileSync(`.env.${env|| 'development'}`))
+    for (let k in configEnv) {
+        if(configEnv.hasOwnProperty(k)) {
+            process.env[k] = configEnv[k]
+        }
+    }
   },
   onErrors: () => {
     const notifier = require('node-notifier')
