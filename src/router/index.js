@@ -75,5 +75,6 @@ export default new Router({
             ]
           }
         ],
-        // mode: 'history'
+        mode: 'history',
+        base: '/ui-doc/'
       })
