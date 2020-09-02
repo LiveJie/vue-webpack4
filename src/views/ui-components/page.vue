@@ -1,13 +1,12 @@
-<!-- UI组件-emoji -->
+<!-- 分页组件-page -->
 <template>
-    <div class="emoji-wrapper">
-        <div class="h1 font24 weight">Emoji表情</div>
+    <div class="page-wrapper">
+        <div class="h1 font24 weight">Page分页</div>
         <div class="h2 font20">基本用法</div>
         <pre><code><div v-html="code1"></div></code></pre>
         <div class="p">例子</div>
-        <div class="emoji-demo">
-            <input class="input" type="text" v-model="inputValue" >
-            <basic-emoji :callBakValue="setValue" :callBakFun="callBakFun"></basic-emoji>
+        <div class="demo">
+            <basic-page @change="pageChange" :showPageSize="5"/>
         </div>
         <div class="h2 font20">Attributes</div>
         <table border="1px solid #ccc !important" class="table">
@@ -21,16 +20,28 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>callBakValue</th>
-                    <th>选中的值</th>
+                    <th>page</th>
+                    <th>当前页数</th>
+                    <th>Number</th>
+                    <th>1</th>
+                </tr>
+                <tr>
+                    <th>total</th>
+                    <th>总页数</th>
+                    <th>Number</th>
+                    <th>10</th>
+                </tr>
+                <tr>
+                    <th>pageChange</th>
+                    <th>函数返回分页改变后的页数</th>
                     <th>Function</th>
                     <th>—</th>
                 </tr>
                 <tr>
-                    <th>callBakFun</th>
-                    <th>选完表情的回调函数</th>
-                    <th>Function</th>
-                    <th>—</th>
+                    <th>showPageSize</th>
+                    <th>展示的页数，必须为奇数，呈两边对称</th>
+                    <th>Number</th>
+                    <th>5</th>
                 </tr>
             </tbody>
         </table>
@@ -47,41 +58,27 @@ export default {
         //这里存放数据
         return {
             code1: `<template>
-    <input type="text" :value="inputValue">
-    <basic-emoji :callBakValue="setValue" :callBakFun="callBakFun"></basic-emoji>
+    <basic-page @change="pageChange" :showPageSize="5"/>
 </template>
 &lt;script>
 export default {
     data () {
         return {
-            inputValue: "" // 选中表情包
         }
     },
     methods: {
-        setValue(item) {
-            this.inputValue += item
-        },
-        callBakFun() {
-            console.log("点击完成的回调事件，写在这里！！！")
+        pageChange(val) {
+            console.log(val) // 改变后的页数
         }
     }
 }
 &lt;/script>
     `,
-    inputValue: '',
-    callBakValue: '',
         };
     },
     methods: {
-        callBakFun(item) {
-            console.log(item)
-            // this.inputValue += callBakValue
-        },
-        setValue(item) {
-            this.inputValue += item
-        },
-        valueChange(item) {
-            console.log(item, "item")
+        pageChange(val) {
+            console.log(val)
         }
     },
     //生命周期 - 创建完成（可以访问当前this实例）
@@ -102,7 +99,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.emoji-wrapper {
+.page-wrapper {
     .h1,.h2 {
         margin: 20px 0;
         color: #666;
@@ -124,12 +121,11 @@ export default {
             font-weight: 400;
         }
     }
-    .emoji-demo {
+    .demo {
         width: 100%;
-        height: 100px;
         border: 1px solid #ddd;
         border-radius: 6px;
-        padding: 10px;
+        padding: 20px;
         box-sizing: border-box;
         .input {
             margin-bottom: 10px;

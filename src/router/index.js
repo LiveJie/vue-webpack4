@@ -8,6 +8,7 @@ export default new Router({
           path: '/',
           name: 'home',
           component: Home,
+          redirect: '/dev-guide/install',
           children: [{
               path: '/dev-guide/install',
               name: 'install',
@@ -29,8 +30,50 @@ export default new Router({
                 return require(['@/views/ui-components/emoji.vue'], resolve)
               }
             },
+            {
+              path: '/ui/page',
+              name: 'page',
+              component: (resolve) => {
+                return require(['@/views/ui-components/page.vue'], resolve)
+              }
+            },
+            {
+              path: '/ui/empty',
+              name: 'empty',
+              component: (resolve) => {
+                return require(['@/views/ui-components/empty.vue'], resolve)
+              }
+            },
+            {
+              path: '/ui/update-image',
+              name: 'update-image',
+              component: (resolve) => {
+                return require(['@/views/ui-components/update-image.vue'], resolve)
+              }
+            },
+            {
+              path: '/ui/image-loadding',
+              name: 'image-loadding',
+              component: (resolve) => {
+                return require(['@/views/ui-components/image-loadding.vue'], resolve)
+              }
+            },
+            {
+              path: '/ui/sliding-captcha',
+              name: 'sliding-captcha',
+              component: (resolve) => {
+                return require(['@/views/ui-components/sliding-captcha.vue'], resolve)
+              }
+            },
+            {
+              path: '/ui/more',
+              name: 'more',
+              component: (resolve) => {
+                return require(['@/views/ui-components/more.vue'], resolve)
+              }
+            },
             ]
           }
         ],
-        mode: 'history'
+        // mode: 'history'
       })

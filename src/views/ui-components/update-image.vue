@@ -1,13 +1,12 @@
-<!-- UI组件-emoji -->
+<!-- 本地上传图片组件-update-image -->
 <template>
-    <div class="emoji-wrapper">
-        <div class="h1 font24 weight">Emoji表情</div>
+    <div class="update-image-wrapper">
+        <div class="h1 font24 weight">图片上传组件</div>
         <div class="h2 font20">基本用法</div>
         <pre><code><div v-html="code1"></div></code></pre>
         <div class="p">例子</div>
-        <div class="emoji-demo">
-            <input class="input" type="text" v-model="inputValue" >
-            <basic-emoji :callBakValue="setValue" :callBakFun="callBakFun"></basic-emoji>
+        <div class="demo">
+            <basic-update-image :toast="errorToast" fileTypes="jpeg, png, gif" :maxLength="1" :fileSize="5" :fileList="fileList" />
         </div>
         <div class="h2 font20">Attributes</div>
         <table border="1px solid #ccc !important" class="table">
@@ -21,67 +20,73 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>callBakValue</th>
-                    <th>选中的值</th>
-                    <th>Function</th>
-                    <th>—</th>
+                    <th>fileTypes</th>
+                    <th>文件类型,类型用逗号隔开</th>
+                    <th>String</th>
+                    <th>'jpeg, png, gif'</th>
                 </tr>
                 <tr>
-                    <th>callBakFun</th>
-                    <th>选完表情的回调函数</th>
+                    <th>toast</th>
+                    <th>需要用到的提示方法</th>
                     <th>Function</th>
-                    <th>—</th>
+                    <th>alert</th>
+                </tr>
+                <tr>
+                    <th>fileSize</th>
+                    <th>文件限制大小 单位MB</th>
+                    <th>Number</th>
+                    <th>5MB</th>
+                </tr>
+                <tr>
+                    <th>maxLength</th>
+                    <th>文件最大数量</th>
+                    <th>Number</th>
+                    <th>5</th>
+                </tr>
+                <tr>
+                    <th>fileList</th>
+                    <th>文件列表</th>
+                    <th>Function</th>
+                    <th>[]</th>
                 </tr>
             </tbody>
         </table>
-        <!-- <basic-page></basic-page> -->
     </div>
 </template>
 
 <script>
 
 export default {
-    name: 'Emoji',
+    name: 'UpdateImage',
     components: {},
     data() {
         //这里存放数据
         return {
             code1: `<template>
-    <input type="text" :value="inputValue">
-    <basic-emoji :callBakValue="setValue" :callBakFun="callBakFun"></basic-emoji>
+    <basic-update-image :toast="errorToast" fileTypes="jpeg, png, gif" :maxLength="1" :fileSize="5" :fileList="fileList" />
 </template>
 &lt;script>
 export default {
     data () {
         return {
-            inputValue: "" // 选中表情包
+            fileList: [] // 接收上传图片文件数组
         }
     },
     methods: {
-        setValue(item) {
-            this.inputValue += item
-        },
-        callBakFun() {
-            console.log("点击完成的回调事件，写在这里！！！")
+        errorToast(msg) {
+            console.log(msg) // 错误提示 可以配合ui框架message来弹出错误内容
         }
+
     }
 }
 &lt;/script>
     `,
-    inputValue: '',
-    callBakValue: '',
+     fileList: [] 
         };
     },
     methods: {
-        callBakFun(item) {
-            console.log(item)
-            // this.inputValue += callBakValue
-        },
-        setValue(item) {
-            this.inputValue += item
-        },
-        valueChange(item) {
-            console.log(item, "item")
+        pageChange(val) {
+            console.log(val)
         }
     },
     //生命周期 - 创建完成（可以访问当前this实例）
@@ -102,7 +107,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.emoji-wrapper {
+.update-image-wrapper {
     .h1,.h2 {
         margin: 20px 0;
         color: #666;
@@ -124,12 +129,11 @@ export default {
             font-weight: 400;
         }
     }
-    .emoji-demo {
+    .demo {
         width: 100%;
-        height: 100px;
         border: 1px solid #ddd;
         border-radius: 6px;
-        padding: 10px;
+        padding: 20px;
         box-sizing: border-box;
         .input {
             margin-bottom: 10px;

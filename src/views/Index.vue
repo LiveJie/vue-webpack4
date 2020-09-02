@@ -47,12 +47,32 @@ export default {
           title: '组件',
           children: [
             { 
-              title: 'emoji',
+              title: 'emoji表情包',
               link: '/ui/emoji'
             },
             { 
-              title: 'input输入框',
-              link: '/'
+              title: 'page分页',
+              link: '/ui/page'
+            },
+            { 
+              title: 'empty分页',
+              link: '/ui/empty'
+            },
+            { 
+              title: '图片上传',
+              link: '/ui/update-image'
+            },
+            { 
+              title: '图片加载中',
+              link: '/ui/image-loadding'
+            },
+            { 
+              title: '滑动验证码',
+              link: '/ui/sliding-captcha'
+            },
+            { 
+              title: '更多',
+              link: '/ui/more'
             },
           ]
         },
@@ -126,6 +146,9 @@ export default {
 <style  lang="scss" scoped>
 .index-wrapper {
   width: 1200px;
+  height: 100vh;
+  padding-bottom: 60px;
+  box-sizing: border-box;
   margin: 0 auto;
   border-radius: 6px;
   overflow: hidden;
@@ -133,6 +156,7 @@ export default {
     height: 60px;
   }
   .catalog-box {
+    height: calc(100% - 60px);
     .catalog-wrapper {
       width: 200px;
       background: #fff;
@@ -165,7 +189,9 @@ export default {
     .content-wrapper {
       flex: 1;
       background: #fff;
-      padding: 10px 20px;
+      padding: 10px 20px 60px 20px;
+      overflow-y: auto;
+      &::-webkit-scrollbar {display:none}
     }
   }
   .theme {

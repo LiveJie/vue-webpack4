@@ -1,13 +1,12 @@
-<!-- UI组件-emoji -->
+<!-- 图片加载组件-image-loadding -->
 <template>
-    <div class="emoji-wrapper">
-        <div class="h1 font24 weight">Emoji表情</div>
+    <div class="image-loadding-wrapper">
+        <div class="h1 font24 weight">图片加载中</div>
         <div class="h2 font20">基本用法</div>
         <pre><code><div v-html="code1"></div></code></pre>
         <div class="p">例子</div>
-        <div class="emoji-demo">
-            <input class="input" type="text" v-model="inputValue" >
-            <basic-emoji :callBakValue="setValue" :callBakFun="callBakFun"></basic-emoji>
+        <div class="demo">
+            <basic-loadding-image style="width: 100%;height:127px;" src="http://oss.humorjie.vip/banner-nav.png" alt="demo图片" />
         </div>
         <div class="h2 font20">Attributes</div>
         <table border="1px solid #ccc !important" class="table">
@@ -21,68 +20,48 @@
             </thead>
             <tbody>
                 <tr>
-                    <th>callBakValue</th>
-                    <th>选中的值</th>
-                    <th>Function</th>
+                    <th>src</th>
+                    <th>需要加载的图片链接或本地图片</th>
+                    <th>Object, String</th>
                     <th>—</th>
                 </tr>
                 <tr>
-                    <th>callBakFun</th>
-                    <th>选完表情的回调函数</th>
-                    <th>Function</th>
+                    <th>alt</th>
+                    <th>图片描述</th>
+                    <th>String</th>
                     <th>—</th>
                 </tr>
             </tbody>
         </table>
-        <!-- <basic-page></basic-page> -->
     </div>
 </template>
 
 <script>
 
 export default {
-    name: 'Emoji',
+    name: 'ImageLoadding',
     components: {},
     data() {
         //这里存放数据
         return {
             code1: `<template>
-    <input type="text" :value="inputValue">
-    <basic-emoji :callBakValue="setValue" :callBakFun="callBakFun"></basic-emoji>
+    <basic-loadding-image  src="http://oss.humorjie.vip/banner-nav.png" alt="demo图片" />
 </template>
 &lt;script>
 export default {
     data () {
         return {
-            inputValue: "" // 选中表情包
         }
     },
     methods: {
-        setValue(item) {
-            this.inputValue += item
-        },
-        callBakFun() {
-            console.log("点击完成的回调事件，写在这里！！！")
-        }
     }
 }
 &lt;/script>
     `,
-    inputValue: '',
-    callBakValue: '',
+     fileList: [] 
         };
     },
     methods: {
-        callBakFun(item) {
-            console.log(item)
-            // this.inputValue += callBakValue
-        },
-        setValue(item) {
-            this.inputValue += item
-        },
-        valueChange(item) {
-            console.log(item, "item")
-        }
     },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
@@ -102,7 +81,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.emoji-wrapper {
+.image-loadding-wrapper {
     .h1,.h2 {
         margin: 20px 0;
         color: #666;
@@ -124,12 +103,11 @@ export default {
             font-weight: 400;
         }
     }
-    .emoji-demo {
+    .demo {
         width: 100%;
-        height: 100px;
         border: 1px solid #ddd;
         border-radius: 6px;
-        padding: 10px;
+        padding: 20px;
         box-sizing: border-box;
         .input {
             margin-bottom: 10px;
