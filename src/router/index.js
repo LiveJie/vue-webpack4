@@ -76,5 +76,5 @@ export default new Router({
           }
         ],
         mode: 'history',
-        base: '/ui-doc/'
+        base: process.env.ENV === 'development' ? '/': '/ui-doc/'
       })

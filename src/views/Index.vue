@@ -81,7 +81,19 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["text"])
+    ...mapGetters([
+      "text",
+      "value1",
+      "value2",
+    ])
+  },
+  watch: {
+    value1: function(newValue) {
+      console.log(newValue)
+    },
+    value2: function(newValue) {
+      console.log(newValue)
+    }
   },
   methods: {
     // 路由跳转
@@ -134,6 +146,10 @@ export default {
   },
   mounted() {
     this.activePath = this.$router.currentRoute.path
+    setTimeout(()=> {
+      this.$store.commit("main/changeValue1", 22)
+      this.$store.commit("main/changeValue2", 33)
+    }, 1000)
       console.log()
       // this.addList()
       // this.deleteList()

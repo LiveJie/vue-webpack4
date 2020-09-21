@@ -22,7 +22,6 @@ module.exports = {
             process.env[k] = configEnv[k]
         }
     }
-    process.env.a = 77
   },
   onErrors: () => {
     const notifier = require('node-notifier')
