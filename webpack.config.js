@@ -2,6 +2,8 @@ const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 // webpack4以上要添加VueLoaderPlugin
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const config = require('./config')
@@ -18,7 +20,7 @@ const webpackConfigFun = ()=> {
         entry: __dirname + "/src/main.js", // 打包入口
         output: { // 出口文件
             path: __dirname + "/dist", // 打包后存放的地方
-            filename: "[name].bundle.js", // 打包后的文件命名
+            filename: "[name].[chunkhash:8].bundle.js", // 打包后的文件命名
             publicPath: process.env.ENV === 'development' ? '/': '/ui-doc/'
         },
         devServer: config.devServer,
@@ -31,13 +33,14 @@ const webpackConfigFun = ()=> {
         module: {
             rules: [
                 { 
-                    test: /\.css$/, 
-                    use: ['style-loader', 'css-loader']
+                    test: /\.css$/i, 
+                    use: [MiniCssExtractPlugin.loader, 'css-loader']
                 },
                 {
                     test: /\.scss$/,
                     use: [
-                        'style-loader', // 将 JS 字符串生成为 style 节点
+                        MiniCssExtractPlugin.loader,
+                        // 'style-loader', // 将 JS 字符串生成为 style 节点 使用min-css-extract-plugin后取消
                         'css-loader', // 将 CSS 转化成 CommonJS 模块
                         'sass-loader', // 将 Sass 编译成 CSS
                         {
@@ -97,7 +100,17 @@ const webpackConfigFun = ()=> {
                 },
                 filename: 'index.html', // 输出的模板名字
                 template: 'index.html' // 模板路径
-            })
+            }),
+            new MiniCssExtractPlugin({
+                filename: '[name].[contenthash:8].css',
+                chunkFilename: '[name].[contenthash:8].css',
+            }),
+            process.env.ENV === 'development' ? '': new CompressionPlugin({
+                test: /\.(js|css)(\?.*)?$/i,
+                exclude: /\/excludes/,
+                filename: '[path][base].gz',
+                deleteOriginalAssets: true,
+            }),
         ],
         stats: process.env.ENV === 'development' ? 'none': true
     }
