@@ -1,5 +1,63 @@
 #### 项目介绍
 # webpack4.0从零到一搭建vue基础项目框架 vue + vue-router + vuex + hot + 换肤 + moke...
+
+# 架构说明
+
+```
+.
+├── config
+│   └── index.js
+├── dist
+├── index.html
+├── list.md
+├── package.json
+├── src
+│   ├── api
+│   │   ├── axiosExpand.js
+│   │   └── index.js
+│   ├── App.vue
+│   ├── assets
+│   │   └── css
+│   │       ├── common.scss
+│   │       ├── flex.scss
+│   │       ├── index.scss
+│   │       ├── mixin.scss
+│   │       ├── reset.css
+│   │       └── theme.scss
+│   ├── data
+│   │   ├── index.js
+│   │   └── test.js
+│   ├── main.js
+│   ├── mock
+│   │   ├── index.js
+│   │   └── test.js
+│   ├── router
+│   │   └── index.js
+│   ├── store
+│   │   ├── getters.js
+│   │   ├── index.js
+│   │   └── modules
+│   │       └── main.js
+│   ├── utils
+│   │   └── index.js
+│   └── views
+│       └── index.vue
+├── static
+│   └── test.txt
+├── webpack.config.js
+└── yarn.lock
+.
+```
+
+#### 安装教程
+
+1. npm i // cnpm i
+
+#### 使用说明
+
+1. 运行项目npm run dev
+2. 打包 npm run build
+
 # 主要内容
 ```
 一. 初始化工程项目
@@ -1840,59 +1898,4 @@ webpack文档地址：[webpack配置](https://webpack.js.org/configuration/mode/
 到这里环境变量就初步配置完成了，后面还有一些webpack优化，兼容，缓存的东西
 未完待续。。。这个项目会一直更新直到功能完善
 项目源码：[vue-webpack4](https://github.com/LiveJie/vue-webpack4)
-# 架构说明
 
-```
-.
-├── config
-│   └── index.js
-├── dist
-├── index.html
-├── list.md
-├── package.json
-├── src
-│   ├── api
-│   │   ├── axiosExpand.js
-│   │   └── index.js
-│   ├── App.vue
-│   ├── assets
-│   │   └── css
-│   │       ├── common.scss
-│   │       ├── flex.scss
-│   │       ├── index.scss
-│   │       ├── mixin.scss
-│   │       ├── reset.css
-│   │       └── theme.scss
-│   ├── data
-│   │   ├── index.js
-│   │   └── test.js
-│   ├── main.js
-│   ├── mock
-│   │   ├── index.js
-│   │   └── test.js
-│   ├── router
-│   │   └── index.js
-│   ├── store
-│   │   ├── getters.js
-│   │   ├── index.js
-│   │   └── modules
-│   │       └── main.js
-│   ├── utils
-│   │   └── index.js
-│   └── views
-│       └── index.vue
-├── static
-│   └── test.txt
-├── webpack.config.js
-└── yarn.lock
-.
-```
-
-#### 安装教程
-
-1. npm i // cnpm i
-
-#### 使用说明
-
-1. 运行项目npm run dev
-2. 打包 npm run build
